@@ -106,6 +106,94 @@ particlesJS('particles-js',
   }
 );
 
+// Initialize particles.js for CTA section
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('cta-particles-js')) {
+    particlesJS('cta-particles-js',
+      {
+        "particles": {
+          "number": {
+            "value": 15,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#00F5FF"
+          },
+          "shape": {
+            "type": "circle"
+          },
+          "opacity": {
+            "value": 0.05,
+            "random": true,
+            "anim": {
+              "enable": true,
+              "speed": 0.2,
+              "opacity_min": 0.02,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+              "enable": true,
+              "speed": 0.5,
+              "size_min": 0.5,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#00F5FF",
+            "opacity": 0.02,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 0.1,
+            "direction": "none",
+            "random": true,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "grab"
+            },
+            "onclick": {
+              "enable": false
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 150,
+              "line_linked": {
+                "opacity": 0.05
+              }
+            }
+          }
+        },
+        "retina_detect": true
+      }
+    );
+  }
+});
+
 // Animation for the circle-overlay
 document.addEventListener('DOMContentLoaded', () => {
     const circleOverlay = document.querySelector('.circle-overlay');
@@ -160,11 +248,19 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-document.querySelectorAll('.value-card, .service-card').forEach(card => {
+document.querySelectorAll('.value-card, .service-card-inner, .stat, .client-logo').forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(30px)';
     card.style.transition = 'all 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
     observer.observe(card);
+});
+
+// Testimonial animations
+document.querySelectorAll('.testimonial-slide').forEach(testimonial => {
+    testimonial.style.opacity = '0';
+    testimonial.style.transform = 'translateY(30px)';
+    testimonial.style.transition = 'all 0.9s cubic-bezier(0.16, 1, 0.3, 1)';
+    observer.observe(testimonial);
 });
 
 // Animated section headers
@@ -181,7 +277,7 @@ document.querySelectorAll('section h2').forEach(heading => {
 });
 
 // Button hover effect
-document.querySelectorAll('.cta-button, .get-started-button').forEach(button => {
+document.querySelectorAll('.cta-button, .get-started-button, .services-cta-button').forEach(button => {
     button.addEventListener('mouseenter', () => {
         const icon = button.querySelector('i');
         if (icon) {
